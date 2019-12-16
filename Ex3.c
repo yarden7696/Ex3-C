@@ -37,7 +37,7 @@ int similar(char *s, char *t,int n)
 
         if (n >= 0)
         {
-          _n--;
+          n--;
          t_index--;
           
         }

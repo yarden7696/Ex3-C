@@ -1,27 +1,20 @@
 #include <stdio.h>
+#include <string.h>
 # define LINE 256
+# define WORD 30
 
-//int getLine(char s[]);
-shift_element(int* arr, int i);
+int getLine(char s[]);
+int getLine(char s[]);
+int similar(char *s, char *t,int n);
+void print_similar_words(char *str);
 
-
-int main(){
-
-// char c [] = "my name yarden\n elon";
-// int res= getLine(c);
-// printf("%d",res);
-
-int arr[7]={1,2,3,4,5,6,7};
-shift_element((arr+2),3);
-for(int i=0; i<7; i++)
+int main()
 {
-  printf("%d\n", arr[i]);
+  char s[] = "hellloo world he0llo";
+  //char t[] = "ssysems";
+print_similar_words(s);
+  //printf(" %d",result);
 }
-return 0;
-}
-
-
-
 
 int getLine(char s[])
 {
@@ -36,3 +29,90 @@ int getLine(char s[])
 }
 
 
+int getword(char w[])
+{
+  int count = 0;
+  for(int i = 0;w[i]!=' ' && w[i] != '\0' && w[i] != '\n'&& w[i] != '\t' && i<30;i++)
+  {
+    count++;
+  }
+    return count;
+}
+
+/*
+* *s - the complet sting
+  *t - the string to be checked
+  n - char can be in word
+*/
+int similar(char *s, char *t,int n)
+{
+/// s can be modifaied
+ int _n = n;
+ int s_index = 0, t_index = 0;
+
+  while ( *(s+s_index) != '\0' && *(t+t_index) != '\0' )
+  {
+
+      if( *(s+s_index) != *(t+t_index) )
+      {
+
+        if (n >= 0)
+        {
+          n--;
+         t_index--;
+          
+        }
+        else
+        {
+          break;
+        }
+        
+
+      }
+      t_index++;
+      s_index++;
+
+  }
+ 
+if (_n==0)
+{
+  return 1;
+}
+
+  return 0;
+}
+
+
+void print_similar_words(char *str)
+{
+  char *str_local = str;
+  char ch[WORD] = {'\0'};
+  char temp[WORD] = {'\0'};
+  int position = 1; 
+
+  fgets(ch, sizeof(ch), stdin);
+while (*str_local != '\0' && position > 0)
+{
+  position = getword(str_local);
+
+  strncpy(temp,str_local,position);
+  if(similar(temp,ch,1) == 1)
+  {
+    printf(temp);
+    printf("\n");
+  }
+     
+
+  str_local = str_local + position+1; 
+  
+  for (int i = 0; *(temp + i) == '\0'  ; i++)
+  {
+    
+    *(temp+i) ='\0';
+  }
+  
+
+}
+
+  
+}

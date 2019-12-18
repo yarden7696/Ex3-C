@@ -14,6 +14,20 @@ print_similar_words(s);
   //printf(" %d",result);
 }
 
+
+
+int getLine(char s[])
+{
+  int length=0;
+  int i=0;
+  while((s[i]!= '\0') && (s[i]!= '\n') && (i<LINE))
+  {
+    length++;
+    i++;
+  }
+   return length;
+}
+
 int getword(char w[])
 {
   int count = 0;
@@ -99,5 +113,14 @@ while (*str_local != '\0' && position > 0)
 
 }
 
-  
+}
+
+shift_element(int* arr, int i)
+{
+  int* j;
+for ( j = (arr+i);  j> arr ;j--)
+   {
+       *j = *(j-1);
+    }  
+
 }

@@ -6,14 +6,15 @@
 int getLine(char s[]);
 int getLine(char s[]);
 int similar(char *s, char *t,int n);
+int substring( char * str1, char * str2);
 void print_similar_words(char *str);
 
 int main()
 {
-  char s[] = "hellloo world he0llo";
-  //char t[] = "ssysems";
-print_similar_words(s);
-  //printf(" %d",result);
+  char s2 []="cat";
+  char s1 []="ccas";
+  int res= substring( s1, s2);
+  printf("%d",res);
 }
 
 int getLine(char s[])
@@ -115,4 +116,23 @@ while (*str_local != '\0' && position > 0)
 }
 
   
+}
+
+// Checks whether str2 is contained in str1 as it is
+int substring( char * str1, char * str2)
+{
+  int length1= getword(str1);
+  int length2= getword(str2);
+  int i,j;
+  int size= length1-length2;
+  char subCheck [length2];
+  for(i=0; i<=size; i++)
+  {
+     for(j=0; j<length2 ; j++)
+     {
+      subCheck[j]=str1[j];   
+     }
+     if(similar(subCheck,str2,0)==1) {return 1;}
+     else{return 0;}
+  }
 }

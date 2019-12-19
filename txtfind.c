@@ -45,12 +45,30 @@ int getword(char w[])
   *t - the string to be checked
   n - char can be in word
 */
+
 int similar(char *s, char *t,int n)
 {
 /// s can be modifaied
  int _n = n;
  int s_index = 0, t_index = 0;
 
+    if(n == 0)
+    {
+        while ( *(s+s_index) != '\0' && *(t+t_index) != '\0' )
+        {
+
+          if( *(s+s_index) != *(t+t_index) )
+          {
+            return 0;
+          }
+          t_index++;
+          s_index++;
+
+        }
+             return 1;
+
+    }
+  
   while ( *(s+s_index) != '\0' && *(t+t_index) != '\0' )
   {
 

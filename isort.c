@@ -26,20 +26,24 @@ void insertion_sort(int* arr, int len)
 
 int main() 
 { 
-    int arr[] = { 12, 11, 13, 5, 6 }; 
-    int n = sizeof(arr) / sizeof(arr[0]); 
-   for (int i = 0; i < 5; i++)
+    int arr[50] ; 
+    int n ; 
+	
+    printf("\n");
+  
+    for (int i = 0; i < numbers; i++)
     {
       
-      printf(" %d ",arr[i]);
+     scanf("%d",&arr[i]);
 
     }
-    printf("\n");
-    insertion_sort(arr, n); 
-    for (int i = 0; i < 5; i++)
+	n = sizeof(arr) / sizeof(arr[0]);
+  insertion_sort(arr, n); 
+
+         for (int i = 0; i < numbers; i++)
     {
       
-      printf(" %d ",arr[i]);
+     printf("%d,",arr[i]);
 
     }
       

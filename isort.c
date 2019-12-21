@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#define numbers 50
 shift_element(int* arr, int i)
 {
   int* j;

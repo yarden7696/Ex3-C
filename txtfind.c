@@ -110,36 +110,42 @@ int similar(char *s, char *t,int n)
 
 void print_similar_words(char *str)
 {
-  char *str_local = str;
-  char ch[WORD] = {'\0'};
-  char temp[WORD] = {'\0'};
-  int position = 1; 
+//char *str_local = { '\0' };
+  char *ch = str;
+  char temp[WORD] = { '\0' };
+  char position = 1;
 
-  fgets(ch, sizeof(ch), stdin);
-  while (*str_local != '\0' && position > 0)
-  {
-    position = getword(str_local);
+  char line[LINE];
+  char *ln = line;
 
-    strncpy(temp,str_local,position);
-    if(similar(temp,ch,1) == 1)
+  while (fgets (ln, LINE, stdin) != NULL)
     {
-      printf(temp);
-      printf("\n");
-  }
-     
+      //printf (" %s", line);
 
-  str_local = str_local + position+1; 
-  
-  for (int i = 0; *(temp + i) == '\0'  ; i++)
-  {
-    
-    *(temp+i) ='\0';
-  }
-  
+      while (*ln != '\0' && position > 0 && *ln != '\n')
+	{
+	  position = getword (ln);
 
-  }
+	  strncpy (temp, ln, position);
+	  if (similar (temp, ch, 1) == 1)
+	    {
+	      printf (temp);
+	      printf ("\n");
+	    }
 
-  
+
+	  ln = (ln + position + 1);
+
+	  for (int i = 0; *(temp+i) != '\0'; i++)
+	    {
+
+	      *(temp + i) = '\0';
+	    }
+
+
+	}
+	ln = line;
+    }
 }
 
 // Checks whether str2 is contained in str1 as it is

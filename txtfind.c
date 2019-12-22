@@ -16,7 +16,6 @@ int main()
   char method[WORD];
   fscanf(stdin, "%s", input);
   fscanf(stdin, "%s", method);
-  printf("%s",method);
    if(method[0] == 'a')
      print_lines(input); 
   if (method[0] == 'b')

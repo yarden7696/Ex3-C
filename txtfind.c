@@ -55,56 +55,31 @@ int getword(char w[])
 int similar(char *s, char *t,int n)
 {
 /// s can be modifaied
- int _n = n;
- int s_index = 0, t_index = 0;
-
-    if(n == 0)
-    {
-        while ( *(s+s_index) != '\0' && *(t+t_index) != '\0' )
-        {
-
-          if( *(s+s_index) != *(t+t_index) )
-          {
-            return 0;
-          }
-          t_index++;
-          s_index++;
-
-        }
-             return 1;
-
-    }
-  
-  while ( *(s+s_index) != '\0' && *(t+t_index) != '\0' )
-  {
-
-      if( *(s+s_index) != *(t+t_index) )
-      {
-
-        if (n >= 0)
-        {
-          n--;
-         t_index--;
-          
-        }
-        else
-        {
-          break;
-        }
-        
-
-      }
-      t_index++;
-      s_index++;
-
-  }
- 
-  if (_n==0)
-  {
-    return 1;
-  }
-
-    return 0;
+ int s_size = strlen(s);
+	int t_size = strlen(t);
+	int ch = 0;
+	int s_index = 0;
+	int t_index = 0;
+	if (s_size - t_size > n || s_size - t_size < 0) {
+		return 0;
+	}
+	while (*(t+t_index) != 0) 
+	{
+		if (*(s+s_index) != *(t+t_index))
+		{
+		    ch++;
+			s_index++;
+			if (ch > n) 
+				return 0;
+		}
+		else
+		{
+			s_index++;
+			t_index++;
+		}
+	}
+	return 1;
+    
 }
 
 

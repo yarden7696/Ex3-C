@@ -12,15 +12,17 @@ void print_lines(char * str);
 
 int main()
 {
-  char *input, 
-  char method;
-  scanf("%s %c",&input,&method);
-  if(method == 'a')
-    print_lines(char * str); 
-  if (method == 'b')
-    print_similar_words(input);
+  char input[WORD]; 
+  char method[WORD];
+  fscanf(stdin, "%s", input);
+  fscanf(stdin, "%s", method);
+  printf("%s",method);
+   if(method[0] == 'a')
+     print_lines(input); 
+  if (method[0] == 'b')
+     print_similar_words(input);
   
-  
+
 }
 
 int getLine(char s[])
@@ -131,20 +133,63 @@ int substring( char * str1, char * str2)
   int i,j;
   int size= length1-length2;
   char subCheck [length2];
+  for (int t = 0; t <= length2; t++)
+	    {
+	     *(subCheck + t) = '\0';
+	    }
   for(i=0; i<=size; i++)
   {
      for(j=0; j<length2 ; j++)
      {
-      subCheck[j]=str1[j];   
+       
+         {subCheck[j]=str1[i+j];} 
      }
+     
      if(similar(subCheck,str2,0)==1) {return 1;}
-     else{return 0;}
+    else{ for (int t = 0; t <= size; t++)
+	    {
+	     *(subCheck + t) = '\0';
+	    }
   }
+
+}
+return 0;
 }
 
 void print_lines(char * str)
 {
+ char *ch = str;
+  char temp[WORD] = { '\0' };
+  char position = 1;
+
+ char line[LINE];
+  char *ln = line;
+
+while(fgets (ln, LINE, stdin) != NULL)
+{
+ while (*ln != '\0' && position > 0 && *ln != '\n')
+	{
+	  position = getword (ln);
+
+	  strncpy (temp, ln, position);
+	  if (substring (temp, ch) == 1)
+	    {
+	      printf (line);
+        break;
+	    }
 
 
+	  ln = (ln + position + 1);
 
+	  for (int i = 0; *(temp+i) != '\0'; i++)
+	    {
+
+	      *(temp + i) = '\0';
+	    }
+
+	}
+  ln = line;
+}
+
+  
 }

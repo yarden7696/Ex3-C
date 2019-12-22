@@ -8,13 +8,19 @@ int getLine(char s[]);
 int similar(char *s, char *t,int n);
 int substring( char * str1, char * str2);
 void print_similar_words(char *str);
+void print_lines(char * str);
 
 int main()
 {
-  char s2 []="cat";
-  char s1 []="ccas";
-  int res= substring( s1, s2);
-  printf("%d",res);
+  char *input, 
+  char method;
+  scanf("%s %c",&input,&method);
+  if(method == 'a')
+    print_lines(char * str); 
+  if (method == 'b')
+    print_similar_words(input);
+  
+  
 }
 
 int getLine(char s[])
@@ -93,12 +99,12 @@ int similar(char *s, char *t,int n)
 
   }
  
-if (_n==0)
-{
-  return 1;
-}
+  if (_n==0)
+  {
+    return 1;
+  }
 
-  return 0;
+    return 0;
 }
 
 
@@ -110,15 +116,15 @@ void print_similar_words(char *str)
   int position = 1; 
 
   fgets(ch, sizeof(ch), stdin);
-while (*str_local != '\0' && position > 0)
-{
-  position = getword(str_local);
-
-  strncpy(temp,str_local,position);
-  if(similar(temp,ch,1) == 1)
+  while (*str_local != '\0' && position > 0)
   {
-    printf(temp);
-    printf("\n");
+    position = getword(str_local);
+
+    strncpy(temp,str_local,position);
+    if(similar(temp,ch,1) == 1)
+    {
+      printf(temp);
+      printf("\n");
   }
      
 
@@ -131,7 +137,7 @@ while (*str_local != '\0' && position > 0)
   }
   
 
-}
+  }
 
   
 }
@@ -153,4 +159,11 @@ int substring( char * str1, char * str2)
      if(similar(subCheck,str2,0)==1) {return 1;}
      else{return 0;}
   }
+}
+
+void print_lines(char * str)
+{
+
+
+
 }
